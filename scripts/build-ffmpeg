@@ -52,10 +52,10 @@ extract() {
 cmake_args="-DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=$destdir"
 if [ "`uname`" = "Linux" ]; then
     outputdir=/output
-    outputfile=$outputdir/ffmpeg-rtsp-manylinux_$(uname -m).tar.gz
+    outputfile=$outputdir/ffmpeg-${ffmpeg_version}-rtsp-manylinux_$(uname -m).tar.gz
 elif [ "`uname`" = "Darwin" ]; then
     outputdir=`pwd`/output
-    outputfile=$outputdir/ffmpeg-rtsp-macosx_$(uname -m).tar.gz
+    outputfile=$outputdir/ffmpeg-${ffmpeg_version}-rtsp-macosx_$(uname -m).tar.gz
     cmake_args="$cmake_args -DCMAKE_INSTALL_NAME_DIR=$destdir/lib"
 else
     echo "Unknown platform"
