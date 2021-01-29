@@ -72,8 +72,8 @@ if [ ! -e $outputfile ]; then
     cd $builddir
 
     # Download latest config.guess files
-    curl -o $builddir/config.guess http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
-    curl -o $builddir/config.sub http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
+    curl -o $builddir/config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD"
+    curl -o $builddir/config.sub "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD"
 
     export CPPFLAGS="-I$destdir/include $CPPFLAGS"
     export LDFLAGS="-L$destdir/lib $LDFLAGS"
