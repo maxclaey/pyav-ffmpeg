@@ -23,6 +23,9 @@ build() {
     path=$builddir/$1
     shift
     configure_args=$*
+    # Apply latest config.guess files
+    cp $builddir/config.guess $path/config.guess
+    cp $builddir/config.sub $path/config.sub
     cd $path
     ./configure $configure_args --prefix=$destdir
     make -j
@@ -67,6 +70,10 @@ if [ ! -e $outputfile ]; then
     mkdir $builddir
     mkdir -p $sourcedir
     cd $builddir
+
+    # Download latest config.guess files
+    curl -o $builddir/config.guess http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
+    curl -o $builddir/config.sub http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
 
     export CPPFLAGS="-I$destdir/include $CPPFLAGS"
     export LDFLAGS="-L$destdir/lib $LDFLAGS"
